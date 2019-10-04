@@ -10,3 +10,6 @@ Below, we give a technical description of each parto of the project:
 - Present a choropleth map showing how many satellites each country has sent to space.
 - Display a 3d map of Earth showing how many satellites have humans placed in space every ten years.
 - Create the iframe...
+- Graph bars of the top 10 most capable countries in space.
+- A quick comparison of China and the USA, and their number of satellites. 
+- An interactive website which will allow the user to filter the aforementioned options. 
