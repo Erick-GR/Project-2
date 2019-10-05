@@ -1,8 +1,8 @@
 
-var data = "../Data/countries.geojson";
+var data = "../../Data/countries.geojson";
 
-var boxscore = "../Data/boxscore.json";
-var satcat = "../Data/satcat.json";
+var boxscore = "../../Data/boxscore.json";
+var satcat = "../../Data/satcat.json";
 
 function initialize() {
 
@@ -23,11 +23,27 @@ function initialize() {
         var year902000 = {};
         var year20002010 = {};
         var year2010 = {};
+        var year_all = {};
 
         for (var x = 0; x < sat_l; x++) {
           var launch_date = sat[x].LAUNCH_YEAR;
           var sat_country = sat[x].COUNTRY;
           var sat_type = sat[x].OBJECT_TYPE;
+
+          if (!(sat_country in year_all)) {
+            year_all[sat_country] = {};
+            year_all[sat_country]["count"] = 1;
+          } else {
+            year_all[sat_country]["count"]++;
+          }
+          if (!("type" in year_all[sat_country])) {
+            year_all[sat_country]["type"] = {};
+          }
+          if (!(sat_type in year_all[sat_country]["type"])) {
+            year_all[sat_country]["type"][sat_type] = 1;
+          } else {
+            year_all[sat_country]["type"][sat_type]++;
+          }
 
           if (+launch_date < 1960) {
             if (!(sat_country in year5060)) {
@@ -144,6 +160,7 @@ function initialize() {
         year902000 = countriesLayers(box, year902000, countries_l, countries_f);
         year20002010 = countriesLayers(box, year20002010, countries_l, countries_f);
         year2010 = countriesLayers(box, year2010, countries_l, countries_f);
+        year_all = countriesLayers(box, year_all, countries_l, countries_f);
         console.log(year5060);
         // console.log(year6070);
         // console.log(year7080);
@@ -152,7 +169,7 @@ function initialize() {
         // console.log(year20002010);
         // console.log(year2010);
 
-        buildMap(year5060, year6070, year7080, year8090, year902000, year20002010, year2010);
+        buildMap(year5060, year6070, year7080, year8090, year902000, year20002010, year2010, year_all);
       });
     });
   });
@@ -219,7 +236,7 @@ function getInfoFrom(object) {
   return popup;
 }
 
-function buildMap(year5060, year6070, year7080, year8090, year902000, year20002010, year2010) {
+function buildMap(year5060, year6070, year7080, year8090, year902000, year20002010, year2010, year_all) {
   var dark = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
@@ -234,6 +251,7 @@ function buildMap(year5060, year6070, year7080, year8090, year902000, year200020
   var layer902000 = L.layerGroup(year902000.layer);
   var layer20002010 = L.layerGroup(year20002010.layer);
   var layer2010 = L.layerGroup(year2010.layer);
+  var layerAll = L.layerGroup(year_all.layer);
 
   var baseMaps = {
     Dark: dark
@@ -246,7 +264,8 @@ function buildMap(year5060, year6070, year7080, year8090, year902000, year200020
     "80-90" : layer8090,
     "90-2000" : layer902000,
     "2000-2010" : layer20002010,
-    "2010 >" : layer2010
+    "2010 >" : layer2010,
+    "All-time" : layerAll
   };
 
   var myMap = L.map("map", {
