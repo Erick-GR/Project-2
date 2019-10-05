@@ -229,7 +229,7 @@ function getInfoFrom(object) {
   var popup = [];
   for (var key in object) {
     if (object.hasOwnProperty(key)) {
-      var stringLine = key + " --> " + object[key];
+      var stringLine = "<a href='../space_objects/" + key + ".html'>" + key + "</a>" + " --> " + object[key];
       popup.push(stringLine);
     }
   }
