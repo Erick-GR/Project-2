@@ -17,10 +17,10 @@ def grafica(year):
     x = r_earth*np.cos(u)*np.sin(v)
     y = r_earth*np.sin(u)*np.sin(v)
     z = r_earth*np.cos(v)
-    ax.plot_wireframe(x, y, z, color="b")
-    ax.set_xlim(-20000, 20000)
-    ax.set_ylim(-20000, 20000)
-    ax.set_zlim(-20000, 20000)
+    ax.plot_wireframe(x, y, z, color="b",alpha=0.1)
+    ax.set_xlim(-50000, 50000)
+    ax.set_ylim(-50000, 50000)
+    ax.set_zlim(-50000, 50000)
 
     data=pd.read_json("Data/satcat.json")
     final=int(year)
@@ -47,9 +47,11 @@ def grafica(year):
         base = pyplot.gca().transData
         rot = transforms.Affine2D().rotate_deg(ang)
 
-        ax.plot(x_e, y_e, 'r', transform = rot + base)
+        ax.plot(x_e, y_e, 'r',alpha=0.1, transform = rot + base)
+    ax.view_init(elev=10., azim=180)
+    plt.tight_layout()
     plt.savefig('image.png')
     #plt.show()
     #print (mpld3.fig_to_html(plt.show()))
     print('Done')
-grafica(2000)
+#grafica(1967)
