@@ -19,22 +19,40 @@
         <div class="form-group col-md-4">
         <label for="date">Date:</label>
         <br>
-        <select class="form-control" id="date">
+        <select class="form-control" id="date-drop">
             <option value="default">--</option>
-            <option value="60">1960</option>
-            <option value="61">1961</option>
-            <option value="62">1962</option>
-            <option value="63">1963</option>
-            <option value="64">1964</option>
-            <option value="65">1965</option>
+            <option value="0">1960</option>
+            <option value="1">1970</option>
+            <option value="2">1980</option>
+            <option value="3">1990</option>
+            <option value="4">2000</option>
+            <option value="5">2010</option>
+            <option value="6">now</option>
         </select>
         </div>
         </br>
         <div>
            <!-- <img src="{{ grafica }}"> -->
-           <iframe src="http://127.0.0.1:5000/get_image/2010" height="500" width="100%"></iframe>
+           <iframe id="orbit" src="http://127.0.0.1:5000/get_image/2010" height="500" width="100%"></iframe>
            <!-- <img src="http://127.0.0.1:5000/get_image/2010" alt="2010 Satellites" height="100%" width="100%"> -->
         </div>
+        <script>
+        var drop = {"0":"1960",
+          "1":"1970",
+          "2":"1980",
+          "3":"1990",
+          "4":"2000",
+          "5":"2010",
+          "6":"2020"};
+        var dropD = d3.select("select").on("change", function() {
+          var selected = d3.select("#date-drop").node().value;
+          console.log( drop[selected] );
+          // d3.select("#selected-dropdown").text(selected);
+          var frame = d3.select("#orbit");
+          frame.attr("src", "http://127.0.0.1:5000/get_image/" + drop[selected]);
+        });
+
+        </script>
     </form>
 </body>
 
