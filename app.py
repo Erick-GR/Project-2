@@ -8,7 +8,7 @@ app = Flask(__name__)
 def get_image(year):
     print(year)
     grafica(year)
-    return send_file("/Users/ingridarmas/Documents/Bootcamp/Project-2/image.png")
+    return send_file("image.png")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -30,7 +30,7 @@ def grafica(year):
     data_filter=data.loc[(data['LAUNCH_YEAR']>=inicio)&(data['LAUNCH_YEAR']<=final),['INCLINATION','PERIGEE','APOGEE','LAUNCH_YEAR']]
 
 
-    for ind in data_filter.index: 
+    for ind in data_filter.index:
         ang = data_filter['INCLINATION'][ind]
         perigee = data_filter['PERIGEE'][ind]
         apogee = data_filter['APOGEE'][ind]
@@ -51,7 +51,7 @@ def grafica(year):
     ax.view_init(elev=10., azim=180)
     plt.tight_layout()
     plt.savefig('image.png')
-    #plt.show()
+    # plt.show()
     #print (mpld3.fig_to_html(plt.show()))
     print('Done')
 #grafica(1967)
