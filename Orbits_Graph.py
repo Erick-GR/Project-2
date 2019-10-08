@@ -48,6 +48,13 @@ def grafica(year):
         rot = transforms.Affine2D().rotate_deg(ang)
 
         ax.plot(x_e, y_e, 'r',alpha=0.1, transform = rot + base)
+
+    fig.patch.set_facecolor('xkcd:black')
+    ax.set_facecolor('xkcd:black')
+    ax.grid(color='black')
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white')
+    ax.tick_params(axis='z', colors='white')
     ax.view_init(elev=10., azim=180)
     plt.tight_layout()
     plt.savefig('image.png')
