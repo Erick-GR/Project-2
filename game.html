@@ -11,7 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
-</head>         
+</head>
 <style>
     body{
     background-image:url('img/space.jpg');
@@ -66,7 +66,7 @@
 }
 
 .trivia-acction {
-    transform: rotate(360deg); 
+    transform: rotate(360deg);
     transition: all 0.5s ease 0.5s;
 }
 
@@ -187,7 +187,7 @@
                                 <li>
                                 <img src="img/Space_Race.png" alt="" width="100%;" height="200px;">
                                 <br>
-                                <input type="radio" value="two" name="question6">1997
+                                <input type="radio" value="two" name="question6">1957
                             </li>
                             <li>
                                 <img src="img/Space_Race.png" alt="" width="100%;" height="200px;">
@@ -216,7 +216,7 @@
                             <li>
                                 <img src="img/Rusia.jpg" alt="" width="100%;" height="200px;">
                                 <br>
-                                <input type="radio" value="three" name="question4">Rusia 
+                                <input type="radio" value="three" name="question4">Rusia
                             </li>
                             <li>
                                 <img src="img/India.jpg" alt="" width="100%;" height="200px;">
@@ -240,7 +240,7 @@
                             <li>
                                 <img src="img/mexican_satelite.jpeg" alt="" width="100%;" height="200px;">
                                 <br>
-                                <input type="radio" value="three" name="question7">10
+                                <input type="radio" value="three" name="question7">13
                             </li>
                             <li>
                                 <img src="img/mexican_satelite.jpeg" alt="" width="100%;" height="200px;">
@@ -357,7 +357,7 @@
                 <br>
             </div>
         </section>
-        
+
     </main>
 
 
@@ -368,7 +368,7 @@
 /*document.getElementById("submit").onclick = check();*/
 
 function check(){
-   
+
     var question1 = document.quiz.question1.value;
     var question2 = document.quiz.question2.value;
     var question3 = document.quiz.question3.value;
@@ -389,7 +389,7 @@ function check(){
         correct++
         console.log("question2 correcta");
     }
-    if(question3 == "two"){
+    if(question3 == "three"){
         correct++
         console.log("question3 correcta");
     }
@@ -397,27 +397,27 @@ function check(){
         correct++;
         console.log("question4 correcta");
     }
-    if(question5 == "three"){
+    if(question5 == "two"){
         correct++
         console.log("question5 correcta");
     }
-    if(question6 == "four"){
+    if(question6 == "three"){
         correct++
         console.log("question6 correcta");
-    }  
+    }
     if(question7 == "three"){
         correct++;
         console.log("question7 correcta");
     }
-    if(question8 == "four"){
+    if(question8 == "one"){
         correct++
         console.log("question8 correcta");
     }
-    if(question9 == "one"){
+    if(question9 == "three"){
         correct++
         console.log("question9 correcta");
     }
-    if(question10 == "two"){
+    if(question10 == "four"){
         correct++
         console.log("question10 correcta");
     }
@@ -441,7 +441,7 @@ var range;
         range = 1;
     }
     if(correct > 9) {
-        range = 0; 
+        range = 0;
     }
 
     document.getElementById("after_submit").style.display = "block";
@@ -451,7 +451,7 @@ var range;
     document.getElementById("number_correct").innerHTML = "You got " + correct + " answers correct!";
     console.log("You got" + correct + "answers correct!")
     document.getElementById("gifs").src = gifs[range];
-}   
+}
 
 </script>
 
